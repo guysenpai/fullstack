@@ -1,0 +1,17 @@
+{
+  "github": {
+    "deploymentEnabled": false
+  },
+  "builds": [
+    {
+      "src": "/dist/apps/app/server/server.mjs",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/dist/apps/app/server/server.mjs" },
+    { "handle": "filesystem" },
+    { "src": "/assets/(.*)", "dest": "/dist/apps/angular-app/browser/$1" },
+    { "src": "/(.*).(js|css|ico)", "dest": "/dist/apps/angular-app/browser/$1.$2" }
+  ]
+}
