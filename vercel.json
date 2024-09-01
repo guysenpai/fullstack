@@ -2,15 +2,25 @@
   "github": {
     "deploymentEnabled": false
   },
-  "rewrites": [
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "dist/apps/app/server/server.mjs"
+      "src": "/dist/apps/api/main.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "/dist/apps/app/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "/dist/apps/app/**/*",
+      "use": "@vercel/static"
     }
   ],
-  "functions": {
-    "dist/apps/app/server/server.mjs": {
-      "includeFiles": "dist/apps/app/**"
-    }
-  }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/dist/apps/api/main.js" },
+    { "handle": "filesystem" },
+    { "src": "/assets/(.*)", "dest": "/dist/apps/app/browser/$1" },
+    { "src": "/(.*).(js|css|ico)", "dest": "/dist/apps/app/browser/$1.$2" },
+    { "src": "/(.*)", "dest": "/dist/apps/app/browser/index.html" }
+  ]
 }
