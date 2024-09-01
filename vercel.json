@@ -17,10 +17,9 @@
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/dist/apps/app/server/server.mjs" },
+    { "src": "/(.*)", "dest": "/dist/apps/app/server/server.mjs" },
     { "handle": "filesystem" },
     { "src": "/assets/(.*)", "dest": "/dist/apps/app/browser/$1" },
-    { "src": "/(.*).(js|css|ico)", "dest": "/dist/apps/app/browser/$1.$2" },
-    { "src": "/(.*)", "dest": "/dist/apps/app/server/server.mjs" }
+    { "src": "/(.*).(js|css|ico)", "dest": "/dist/apps/app/browser/$1.$2" }
   ]
 }
