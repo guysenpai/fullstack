@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 import bootstrap from './src/main.server';
 
 // The Express app is exported so that it can be used by serverless Functions.
-export async function app(): Promise<express.Express> {
+export async function app() {
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -66,9 +66,9 @@ export async function app(): Promise<express.Express> {
   return server;
 }
 
-export default app();
+export default app;
 
-async function run(): Promise<void> {
+async function run() {
   const port = process.env['PORT'] || 4000;
 
   // Start up the Node server
