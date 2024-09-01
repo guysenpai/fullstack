@@ -66,6 +66,8 @@ export async function app(): Promise<express.Express> {
   return server;
 }
 
+export default app();
+
 async function run(): Promise<void> {
   const port = process.env['PORT'] || 4000;
 
