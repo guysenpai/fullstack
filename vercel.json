@@ -10,10 +10,6 @@
     {
       "src": "/dist/apps/app/*",
       "use": "@vercel/static"
-    },
-    {
-      "src": "/dist/apps/app/browser/*",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
